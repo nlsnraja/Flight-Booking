@@ -27,13 +27,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Flight {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int flightId;
 	
-	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private Airline airline;
 	
-	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private FlightSchedule schedule;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
