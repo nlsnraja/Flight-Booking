@@ -13,18 +13,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long customerId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phone;
-
-//	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-//	private Users user;
-
-//	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-//	private List<Booking> bookings = new ArrayList<>();
 
 	public long getCustomerId() {
 		return customerId;
@@ -65,26 +59,4 @@ public class Customer {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-//	public List<Booking> getBookings() {
-//		return bookings;
-//	}
-//
-//	public void setBookings(List<Booking> bookings) {
-//		this.bookings = bookings;
-//		
-//		for(Booking b: bookings) {
-//			b.setCustomer(this);
-//		}
-//	}
-
-//	public Users getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(Users user) {
-//		this.user = user;
-//	}
-//	
-
 }

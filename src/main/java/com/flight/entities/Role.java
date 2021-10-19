@@ -24,7 +24,7 @@ public class Role {
 	public static final String USER = "USER";
 	public static final String ADMIN = "ADMIN";
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "role_id")
 	private Integer id;
 

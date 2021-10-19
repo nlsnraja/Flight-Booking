@@ -29,20 +29,20 @@ import lombok.NoArgsConstructor;
 public class Users {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int userId;
 	@Column(name = "name")
 	private String userName;
 
 	// USERS MAPPED WITH CUSTOMER
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id")
-	private Customer customerId;
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	private Customer customer;
+	
 	private String password;
 
 	// USERS MAPPED WITH ROLES
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
