@@ -12,4 +12,5 @@ public interface BookingService {
 	Booking deleteBooking(Booking booking);
 	List<Booking> viewAllBooking();
 	Booking viewBookingById(int id);
+	Booking updateBooking(Booking booking);
 }

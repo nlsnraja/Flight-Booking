@@ -7,5 +7,5 @@ import com.flight.entities.Airport;
 
 @Repository
 public interface AirportRepository extends JpaRepository<Airport, Integer>{
-	Airport findByairportId(int d);
+	Airport findByairportName(String name);
 }

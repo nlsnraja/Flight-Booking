@@ -9,9 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -29,27 +26,27 @@ public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int flightId;
-	
+
 	@OneToOne(cascade = CascadeType.MERGE)
 	private Airline airline;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private FlightSchedule schedule;
-	
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date departureTime;
-	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date departureTime;
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date arrivalTime;
-	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date arrivalTime;
+
 //	@OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
 //    private List<Ticket> tickets = new ArrayList<>();
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-    private List<Discount> discounts= new ArrayList<>();
-	
+	private List<Discount> discounts = new ArrayList<>();
+
 	public int getFlightId() {
 		return flightId;
 	}
@@ -108,7 +105,5 @@ public class Flight {
 	public void setDiscounts(List<Discount> discounts) {
 		this.discounts = discounts;
 	}
-	
-	
-	
+
 }

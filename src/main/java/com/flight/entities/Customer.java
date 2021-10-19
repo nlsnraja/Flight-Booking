@@ -1,22 +1,16 @@
 package com.flight.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +19,13 @@ public class Customer {
 	private String lastName;
 	private String email;
 	private String phone;
-	
+
 //	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
 //	private Users user;
-	
+
 //	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 //	private List<Booking> bookings = new ArrayList<>();
-	
+
 	public long getCustomerId() {
 		return customerId;
 	}
@@ -84,14 +78,6 @@ public class Customer {
 //		}
 //	}
 
-	public Customer(String firstName, String lastName, String email, String phone) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phone = phone;
-	}
-
 //	public Users getUser() {
 //		return user;
 //	}
@@ -100,5 +86,5 @@ public class Customer {
 //		this.user = user;
 //	}
 //	
-	
+
 }

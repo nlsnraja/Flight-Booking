@@ -50,4 +50,13 @@ public class AirportServiceImpl implements AirportService {
 		return a;
 	}
 
+	@Override
+	public Airport viewAirportByName(String name) {
+		Airport a = airportRepository.findByairportName(name);
+		if(a==null) {
+			throw new  NullPointerException("No airport i present with this name");
+		}
+		return a;
+	}
+
 }

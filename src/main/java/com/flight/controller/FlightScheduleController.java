@@ -20,7 +20,7 @@ import com.flight.entities.FlightSchedule;
 import com.flight.service.FlightScheduleService;
 
 @RestController
-@RequestMapping("/flight/schedule")
+@RequestMapping("/flightSchedule")
 public class FlightScheduleController {
 
 	@Autowired

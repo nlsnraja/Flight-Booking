@@ -20,7 +20,7 @@ import com.flight.entities.Booking;
 import com.flight.service.BookingService;
 
 @RestController
-@RequestMapping("/Booking")
+@RequestMapping("/booking")
 public class BookingController {
 
 	@Autowired
@@ -58,5 +58,13 @@ public class BookingController {
 				.toUri();
 		return ResponseEntity.created(location).body(b);
 	}
-
+	
+	@PostMapping("/update")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking) {
+		Booking b = bookingService.updateBooking(booking);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(b.getBookingId())
+				.toUri();
+		return ResponseEntity.created(location).body(b);
+	}
 }

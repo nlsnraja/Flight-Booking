@@ -31,7 +31,7 @@ public class FlightScheduleServiceImpl implements FlightScheduleService {
 
 	@Override
 	public FlightSchedule updateFlightSchedule(FlightSchedule flightSchedule) {
-		FlightSchedule f = flightScheduleRepository.findById(flightSchedule.getId())
+		flightScheduleRepository.findById(flightSchedule.getId())
 				.orElseThrow(() -> new EntityNotFoundException("No such Flight Schedule"));
 		return flightScheduleRepository.save(flightSchedule);
 	}
@@ -39,10 +39,17 @@ public class FlightScheduleServiceImpl implements FlightScheduleService {
 	@Override
 	public List<FlightSchedule> viewAllFlightSchedule() {
 		List<FlightSchedule> list = flightScheduleRepository.findAll();
-		if(list.isEmpty()) {
+		if (list.isEmpty()) {
 			throw new NullPointerException("No Flight Schedule");
 		}
 		return list;
+	}
+
+	@Override
+	public FlightSchedule viewById(int id) {
+		FlightSchedule f = flightScheduleRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("No such Flight Schedule"));
+		return f;
 	}
 
 }

@@ -44,4 +44,10 @@ public class BookingServiceImpl implements BookingService {
 		return b;
 	}
 
+	@Override
+	public Booking updateBooking(Booking booking) {
+		bookingRepository.findById(booking.getBookingId()).orElseThrow(()->new EntityNotFoundException("No such Booking available"));
+		return bookingRepository.save(booking);
+	}
+
 }

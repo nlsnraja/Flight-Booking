@@ -7,5 +7,5 @@ import com.flight.entities.Airline;
 
 @Repository
 public interface AirlineRepository extends JpaRepository<Airline, Long> {
-	Airline findByairlineId(int id);
+	Airline findByairlineName(String airlineName);
 }

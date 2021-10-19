@@ -11,23 +11,23 @@ public class UsersServiceImpl implements UsersService {
 
 	@Autowired
 	private UserRepository repository;
-	
+
 	// ADD NEW USER
-		@Override
-		public Users addNewUser(Users user) {
-			return repository.save(user);
-		}
+	@Override
+	public Users addNewUser(Users user) {
+		return repository.save(user);
+	}
 
-		// USER SIGN IN
-		@Override
-		public Users signIn(Users user) {
-			return null;
-		}
+	// USER SIGN IN
+	@Override
+	public Users signIn(Users user) {
+		return null;
+	}
 
-		// USER SIGN OUT
-		@Override
-		public Users signOut(Users user) {
-			return null;
-		}
+	// USER SIGN OUT
+	@Override
+	public Users signOut(Users user) {
+		return null;
+	}
 
 }

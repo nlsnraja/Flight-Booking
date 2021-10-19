@@ -37,7 +37,8 @@ public class Users {
 
 	// USERS MAPPED WITH CUSTOMER
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Customer customer;
+	@JoinColumn(name = "customer_id")
+	private Customer customerId;
 	private String password;
 
 	// USERS MAPPED WITH ROLES
@@ -45,8 +46,6 @@ public class Users {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
-
-	 
 	public Users(int i, String string) {
 		// TODO Auto-generated constructor stub
 	}

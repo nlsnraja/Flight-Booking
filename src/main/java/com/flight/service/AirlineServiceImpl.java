@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.flight.dao.AirlineRepository;
@@ -32,11 +31,11 @@ public class AirlineServiceImpl implements AirlineService {
 
 	@Override
 	public Airline updateAirline(Airline airline) {
-		Airline a =airlineRepository.findById(airline.getAirlineId())
+		airlineRepository.findById(airline.getAirlineId())
 				.orElseThrow(() -> new EntityNotFoundException("Currently No airline is available with this id"));
-		a.setAirlineName(airline.getAirlineName());
-		a.setImageUrl(airline.getImageUrl());
-		return airlineRepository.save(a);
+//		a.setAirlineName(airline.getAirlineName());
+//		a.setImageUrl(airline.getImageUrl());
+		return airlineRepository.save(airline);
 	}
 
 	@Override
@@ -53,6 +52,15 @@ public class AirlineServiceImpl implements AirlineService {
 			throw new NullPointerException("Currently no airlines are available");
 		}
 		return list;
+	}
+
+	@Override
+	public Airline viewAirlineByName(String name) {
+		Airline a = airlineRepository.findByairlineName(name);
+		if(a==null) {
+			throw new NullPointerException("Currently no airlines are available with this name");
+		}
+		return a;
 	}
 
 }

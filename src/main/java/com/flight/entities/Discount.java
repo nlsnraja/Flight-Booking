@@ -1,13 +1,11 @@
- package com.flight.entities;
+package com.flight.entities;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +20,7 @@ public class Discount {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int discountId;
 	private String discountCoupon;
-	private String meal;
+	
+	@Enumerated(EnumType.STRING)
+	private MealType mealType;
 }

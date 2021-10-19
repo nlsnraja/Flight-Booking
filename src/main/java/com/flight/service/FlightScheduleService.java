@@ -12,4 +12,5 @@ public interface FlightScheduleService {
 	FlightSchedule deleteFlightSchedule(FlightSchedule flightSchedule);
 	FlightSchedule updateFlightSchedule(FlightSchedule flightSchedule);
 	List<FlightSchedule> viewAllFlightSchedule();
+	FlightSchedule viewById(int id);
 }

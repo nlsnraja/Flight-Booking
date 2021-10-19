@@ -27,8 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer updateCustomer(Customer customer) {
 		Customer cust = repository.findById(customer.getCustomerId())
 				.orElseThrow(() -> new EntityNotFoundException("Currently No Customer is available with this id"));
-		cust.setEmail(customer.getEmail());
-		return repository.save(cust);
+		return repository.save(customer);
 	}
 
 	// DELETE CUSTOMER

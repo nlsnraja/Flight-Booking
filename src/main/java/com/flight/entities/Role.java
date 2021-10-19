@@ -31,7 +31,4 @@ public class Role {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role_name")
 	private Roles roleName;
-	
-	@ManyToMany(mappedBy = "roles")
-    private Set<Users> users = new HashSet<>();
 }

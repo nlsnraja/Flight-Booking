@@ -13,4 +13,5 @@ public interface AirportService {
 	Airport updateAirport(Airport airport);
 	List<Airport> viewAllAirport();
 	Airport viewAirportById(int id);
+	Airport viewAirportByName(String name);
 }

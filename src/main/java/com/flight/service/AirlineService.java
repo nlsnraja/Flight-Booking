@@ -13,4 +13,5 @@ public interface AirlineService {
 	Airline updateAirline(Airline airline);
 	Airline viewAirline(int airlineId);
 	List<Airline> viewAllAirlines();
+	Airline viewAirlineByName(String name);
 }

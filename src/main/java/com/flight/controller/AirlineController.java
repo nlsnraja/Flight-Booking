@@ -63,9 +63,16 @@ public class AirlineController {
 	@GetMapping("/view/{id}")
 	public ResponseEntity<Airline> viewAirlineById(@PathVariable int id) {
 		Airline a = airlineService.viewAirline(id);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id").buildAndExpand(a.getAirlineId())
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(a.getAirlineId())
 				.toUri();
 		return ResponseEntity.created(location).body(a);
 	}
-
+	
+	@GetMapping("/view/name{name}")
+	public ResponseEntity<Airline> viewAirlineByName(@PathVariable String name) {
+		Airline a = airlineService.viewAirlineByName(name);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(a.getAirlineId())
+				.toUri();
+		return ResponseEntity.created(location).body(a);
+	}
 }

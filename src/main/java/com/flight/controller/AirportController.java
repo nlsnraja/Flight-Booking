@@ -46,7 +46,7 @@ public class AirportController {
 	
 	@DeleteMapping("/delete")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<String> deleteAirportEntity(@RequestBody Airport airport){
+	public ResponseEntity<String> deleteAirport(@RequestBody Airport airport){
 		Airport a = airportService.deleteAirport(airport);
 		if(a==null) {
 			return new ResponseEntity<String>("Deleted Successfully..", HttpStatus.OK);
@@ -66,5 +66,13 @@ public class AirportController {
 	@GetMapping("/view/all")
 	public List<Airport> viewAllAirport(){
 		return airportService.viewAllAirport();
+	}
+	
+	@GetMapping("/view/name/{name}")
+	public ResponseEntity<Airport> viewAirportByName(@PathVariable String name){
+		Airport a = airportService.viewAirportByName(name);
+		URI locaion = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(a.getAirportId())
+				.toUri();
+		return ResponseEntity.created(locaion).body(a);
 	}
 }
