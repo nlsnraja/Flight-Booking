@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Booking {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long bookingId;
 	
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -36,7 +36,7 @@ public class Booking {
     
     private double totalCost;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Customer customer;
     
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
@@ -65,7 +65,7 @@ public class Booking {
 	public void setTotalCost(double totalCost) {
 		this.totalCost = totalCost;
 	}
-	@JsonIgnore
+
 	public Customer getCustomer() {
 		return customer;
 	}

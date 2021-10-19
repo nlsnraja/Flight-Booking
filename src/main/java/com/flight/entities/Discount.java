@@ -19,11 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Discount {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int discountId;
 	private String discountCoupon;
 	private String meal;
-	
-//	@ManyToMany(mappedBy = "discounts", cascade = CascadeType.ALL)
-//    private List<Flight> flights;
 }

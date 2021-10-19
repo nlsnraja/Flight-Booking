@@ -1,11 +1,13 @@
 package com.flight.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Ticket {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO )
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private int ticketId;
 	private String seatType;
 	private String firstName;
@@ -25,10 +27,10 @@ public class Ticket {
 	private String gender;
 	private double cost;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE)
     private Flight flight;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Booking booking;
 
 	public int getTicketId() {
@@ -79,7 +81,6 @@ public class Ticket {
 		this.cost = cost;
 	}
 	
-	@JsonIgnore
 	public Flight getFlight() {
 		return flight;
 	}

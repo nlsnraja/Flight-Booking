@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long customerId;
 	private String firstName;
 	private String lastName;
@@ -29,8 +29,8 @@ public class Customer {
 //	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
 //	private Users user;
 	
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private List<Booking> bookings = new ArrayList<>();
+//	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+//	private List<Booking> bookings = new ArrayList<>();
 	
 	public long getCustomerId() {
 		return customerId;
@@ -72,17 +72,17 @@ public class Customer {
 		this.phone = phone;
 	}
 
-	public List<Booking> getBookings() {
-		return bookings;
-	}
-
-	public void setBookings(List<Booking> bookings) {
-		this.bookings = bookings;
-		
-		for(Booking b: bookings) {
-			b.setCustomer(this);
-		}
-	}
+//	public List<Booking> getBookings() {
+//		return bookings;
+//	}
+//
+//	public void setBookings(List<Booking> bookings) {
+//		this.bookings = bookings;
+//		
+//		for(Booking b: bookings) {
+//			b.setCustomer(this);
+//		}
+//	}
 
 	public Customer(String firstName, String lastName, String email, String phone) {
 		super();
